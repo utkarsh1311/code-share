@@ -19,10 +19,18 @@ const userSchema = new mongoose.Schema({
     min: 8,
     max: 1024,
   },
-  friends: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+  friends: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  friendRequests: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   snippets: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Snippet",
