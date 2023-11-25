@@ -132,3 +132,12 @@ export const acceptFriendRequest = async (req, res, next) => {
   await friendToAdd.save();
   res.status(200).json({ message: "Friend added successfully " });
 };
+
+export const getAllFriends = async (req, res, next) => {
+  const user = req.user;
+  const friends = await User.find({ username: user.username }).populate(
+    "friends",
+    {}
+  );
+  res.json(friends);
+};
